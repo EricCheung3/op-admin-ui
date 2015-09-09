@@ -13,7 +13,9 @@
             // uncomment above to activate the example seed module
             //'app.examples'
             'openprice.common',
-            'openprice.authentication', 'openprice.dashboards'
+            'openprice.authentication',
+            'openprice.dashboards',
+            'openprice.admin.users'
         ])
         // create a constant for languages so they can be added to both triangular & translate
         .constant('APP_LANGUAGES', [{
@@ -31,6 +33,6 @@
         }])
         // set a constant for the API we are connecting to
         .constant('API_CONFIG', {
-            'url':  'http://108.59.83.3/'
+            'url':  'http://104.197.47.140/'
         });
 })();

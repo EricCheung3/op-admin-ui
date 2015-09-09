@@ -30,7 +30,7 @@
     "angular-linkify": "~1.2.0",
     "angular-ui-calendar": "~1.0.0",
     "weather-icons": "https://github.com/chk1/weather-icons.git#master",
-    "angular-material-data-table": "0.8.0",
+    "angular-material-data-table": "0.8.11",
     "angular-digest-hud": "~0.1.13",
     "angular-hal": "0.1.5"
   },

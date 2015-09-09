@@ -1,0 +1,14 @@
+{
+    "MENU": {
+        "USER-ADMIN": {
+            "MODULE": "Manage Users",
+            "LIST-USER-PAGE": "User List"
+        }
+    },
+    "USER-ADMIN": {
+        "LIST-USERS": {
+            "TITLE": "List all users"
+        }
+
+    }
+}

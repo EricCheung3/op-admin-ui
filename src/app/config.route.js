@@ -18,7 +18,7 @@
             controller: function($state) {
                 var vm = this;
                 vm.goHome = function() {
-                    $state.go('triangular.admin-default.dashboard-analytics');
+                    $state.go('admin.dashboard.analytics');
                 };
             }
         })
@@ -30,15 +30,15 @@
             controller: function($state) {
                 var vm = this;
                 vm.goHome = function() {
-                    $state.go('triangular.admin-default.dashboard-analytics');
+                    $state.go('admin.dashboard.analytics');
                 };
             }
         });
 
 
         // set default routes when no path specified
-        //$urlRouterProvider.when('', '/dashboards/analytics');
-        //$urlRouterProvider.when('/', '/dashboards/analytics');
+        $urlRouterProvider.when('', '/dashboards/analytics');
+        $urlRouterProvider.when('/', '/dashboards/analytics');
 
         // always goto 404 if route not found
         $urlRouterProvider.otherwise('/');

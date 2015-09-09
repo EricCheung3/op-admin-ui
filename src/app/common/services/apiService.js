@@ -8,7 +8,7 @@
     apiService.$inject = ['$rootScope', '$http', 'halClient', 'tokenStorage'];
 
     function apiService(   $rootScope,   $http,   halClient,   tokenStorage) {
-        var serverHost = 'http://108.59.83.3/';
+        var serverHost = 'http://104.197.47.140/';
         var websiteResource = null,
             adminResource = null,
             userResource = null;
@@ -31,7 +31,7 @@
         function authenticate(credentials, callback) {
             console.log('apiService.authenticate() for '+credentials.username);
 
-            $http.post(serverHost + '/api/signin', credentials)
+            $http.post(serverHost + 'api/signin', credentials)
                 .success( function(data, status, headers){
                     tokenStorage.store(headers('X-AUTH-TOKEN'));
                     reload(); // refresh websiteResource after login
@@ -52,7 +52,7 @@
         function reload() {
             websiteResource =
                 halClient
-                    .$get(serverHost + '/api')
+                    .$get(serverHost + 'api/')
                     .then( function( resource ) {
                         $rootScope.authenticated = resource.authenticated;
                         $rootScope.currentUser = resource.currentUser;
@@ -74,14 +74,14 @@
 
         function getAdminResource() {
             if (adminResource == null) {
-                adminResource = halClient.$get(serverHost + '/api/admin');
+                adminResource = halClient.$get(serverHost + 'api/admin/');
             }
             return adminResource;
         };
 
         function getUserResource() {
             if (userResource == null) {
-                userResource = halClient.$get(serverHost + '/api/user');
+                userResource = halClient.$get(serverHost + 'api/user/');
             }
             return userResource;
         };

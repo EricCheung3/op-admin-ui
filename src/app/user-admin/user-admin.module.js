@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('seed-module', [
+        .module('openprice.admin.users', [
         ]);
 })();

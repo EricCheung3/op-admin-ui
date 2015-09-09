@@ -1,0 +1,31 @@
+<md-content class="padded-content-page">
+    <div layout="row" layout-align="center center">
+        <h2 class="md-display-3" translate>USER-ADMIN.LIST-USERS.TITLE</h2>
+    </div>
+    <div class="margin-20" layout="row" layout-align="center center">
+
+        <md-data-table-toolbar>
+            <h2 class="md-title" translate>USER-ADMIN.LIST-USERS.TITLE</h2>
+        </md-data-table-toolbar>
+
+        <md-data-table-container>
+            <table md-data-table md-row-select="selected" md-progress="deferred">
+                <thead md-order="query.order" md-trigger="onOrderChange">
+                  <tr>
+                    <th name="Username" order-by="username"></th>
+                    <th name="Email" order-by="email"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr md-auto-select ng-repeat="user in vm.users">
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+
+        <md-data-table-pagination md-limit="vm.page.size" md-page="vm.page.currentPage" md-total="{{vm.page.totalElements}}" md-trigger="pageChanged"></md-data-table-pagination>
+
+    </div>
+</md-content>

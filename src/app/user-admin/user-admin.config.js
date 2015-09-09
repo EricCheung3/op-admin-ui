@@ -2,30 +2,30 @@
     'use strict';
 
     angular
-        .module('seed-module')
+        .module('openprice.admin.users')
         .config(moduleConfig);
 
     /* @ngInject */
     function moduleConfig($translatePartialLoaderProvider, $stateProvider, triMenuProvider) {
-        $translatePartialLoaderProvider.addPart('app/seed-module');
+        $translatePartialLoaderProvider.addPart('app/user-admin');
 
         $stateProvider
-        .state('triangular.admin-default.seed-page', {
-            url: '/seed-module/seed-page',
-            templateUrl: 'app/seed-module/seed-page.tmpl.html',
+        .state('triangular.admin-default.user-list', {
+            url: '/admin/users',
+            templateUrl: 'app/user-admin/list-users.tmpl.html',
             // set the controller to load for this page
-            controller: 'SeedPageController',
+            controller: 'ListUsersController',
             controllerAs: 'vm'
         });
 
         triMenuProvider.addMenu({
-            name: 'MENU.SEED.SEED-MODULE',
+            name: 'MENU.USER-ADMIN.MODULE',
             icon: 'icon-grade',
             type: 'dropdown',
-            priority: 1.1,
+            priority: 2.2,
             children: [{
-                name: 'MENU.SEED.SEED-PAGE',
-                state: 'triangular.admin-default.seed-page',
+                name: 'MENU.USER-ADMIN.LIST-USER-PAGE',
+                state: 'triangular.admin-default.user-list',
                 type: 'link'
             }]
         });
