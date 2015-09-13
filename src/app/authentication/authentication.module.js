@@ -3,6 +3,6 @@
 
     angular
         .module('openprice.authentication', [
-
+            'openprice.common'
         ]);
 })();

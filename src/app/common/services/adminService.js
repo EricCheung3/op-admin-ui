@@ -3,15 +3,12 @@
 
     angular
         .module('openprice.common')
-        .factory('apiService', apiService);
+        .factory('adminService', adminService);
 
-    apiService.$inject = ['$rootScope', '$http', 'halClient', 'tokenStorage'];
-
-    function apiService(   $rootScope,   $http,   halClient,   tokenStorage) {
+    /* @ngInject */
+    function adminService($rootScope, $http, halClient, tokenStorage) {
         var serverHost = 'http://104.197.47.140:7801/';
-        var websiteResource = null,
-            adminResource = null,
-            userResource = null;
+        var adminResource = null;
 
         return {
             'init' : init,
@@ -19,9 +16,7 @@
             'clear' : clear,
             'reload' : reload,
             'getResource' : getResource,
-            'getWebsiteResource' : getWebsiteResource,
-            'getAdminResource' : getAdminResource,
-            'getUserResource' : getUserResource
+            'getAdminResource' : getAdminResource
         };
 
         function init(host) {
@@ -29,7 +24,7 @@
         };
 
         function authenticate(credentials, callback) {
-            console.log('apiService.authenticate() for '+credentials.username);
+            console.log('adminService.authenticate() for '+credentials.username);
 
             $http.post(serverHost + 'api/signin', credentials)
                 .success( function(data, status, headers){
@@ -50,13 +45,20 @@
         };
 
         function reload() {
-            websiteResource =
+            console.log('==>Reload adminResource...');
+            adminResource =
                 halClient
-                    .$get(serverHost + 'api/')
+                    .$get(serverHost + 'api/admin/')
                     .then( function( resource ) {
-                        $rootScope.authenticated = resource.authenticated;
-                        $rootScope.currentUser = resource.currentUser;
+                        $rootScope.authenticated = true;
+                        $rootScope.currentUser = resource;
                         return resource;
+                    }, function( err ) {
+                        console.log('Reload adminResource error ');
+                        console.log(err);
+                        $rootScope.authenticated = false;
+                        $rootScope.currentUser = null;
+                        return null;
                     });
         };
 
@@ -64,26 +66,13 @@
             return halClient.$get(resourceUrl);
         };
 
-        function getWebsiteResource() {
-            if (websiteResource == null) {
-                console.log("First time to get websiteResource from server!");
-                reload();
-            }
-            return websiteResource;
-        };
 
         function getAdminResource() {
             if (adminResource == null) {
-                adminResource = halClient.$get(serverHost + 'api/admin/');
+                reload();
             }
             return adminResource;
         };
 
-        function getUserResource() {
-            if (userResource == null) {
-                userResource = halClient.$get(serverHost + 'api/user/');
-            }
-            return userResource;
-        };
     };
 })();

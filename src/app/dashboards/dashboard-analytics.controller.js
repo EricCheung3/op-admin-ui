@@ -23,7 +23,7 @@
         function newMailNotificationController() {
             var vm = this;
             vm.viewUnread = function() {
-                $state.go('admin-panel-email-no-scroll.email.inbox');
+                //$state.go('admin-panel-email-no-scroll.email.inbox');
             };
         }
     }

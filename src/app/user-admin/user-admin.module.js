@@ -3,5 +3,6 @@
 
     angular
         .module('openprice.admin.users', [
+            'openprice.common'
         ]);
 })();

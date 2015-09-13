@@ -6,25 +6,22 @@
         .controller('HomeController', HomeController);
 
     /* @ngInject */
-    function HomeController($log, $rootScope, $state, apiService ) {
+    function HomeController($log, $rootScope, $state, adminService ) {
         $log.debug('==> HomeController');
 
         loadCurrentSigninUser();
 
         function loadCurrentSigninUser() {
-            apiService
-                .getWebsiteResource()
-                .then( function( websiteResource ) {
-                    if (websiteResource.authenticated) {
-                        $log.debug("already logged in, go to dashboard");
-                        $rootScope.authenticated = true;
-                        $rootScope.currentUser = websiteResource.currentUser;
-                        $state.go("admin.dashboard");
-                    } else {
-                        $rootScope.authenticated = false;
-                        $rootScope.currentUser = null;
+            adminService
+                .getAdminResource()
+                .then( function( resource ) {
+                    if (resource === null) {
+                        $log.debug("Not logged in, go to login page");
                         $state.go("authentication.login");
-                        $log.debug("redirect to login");
+                    } else {
+                        $log.debug("already logged in, go to dashboard");
+                        $rootScope.currentUser = resource;
+                        $state.go("triangular.admin-default.dashboard-general");
                     }
                 });
         };

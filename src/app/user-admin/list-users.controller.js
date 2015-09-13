@@ -6,7 +6,7 @@
         .controller('ListUsersController', ListUsersController);
 
     /* @ngInject */
-    function ListUsersController(apiService) {
+    function ListUsersController(adminService) {
         var vm = this;
         vm.users = [];
         vm.page = {};
@@ -16,7 +16,7 @@
         setup(0);
 
         function setup( pageNumber ) {
-            apiService.getAdminResource()
+            adminService.getAdminResource()
             .then( function(resource) {
                 return resource.$get('users', {'page': pageNumber, 'size':10, 'sort':null});
             })

@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($log, $scope,  $state, triSettings, apiService) {
+    function LoginController($log, $scope,  $state, triSettings, adminService) {
         var vm = this;
         vm.loginClick = loginClick;
         vm.socialLogins = [{
@@ -36,7 +36,7 @@
         ////////////////
 
         function loginClick() {
-            apiService.authenticate(vm.user, function(authenticated) {
+            adminService.authenticate(vm.user, function(authenticated) {
                 if (authenticated) {
                     $log.debug('Login succeeded')
                     $scope.error = false;

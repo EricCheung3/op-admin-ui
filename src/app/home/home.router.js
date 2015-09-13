@@ -5,7 +5,7 @@
 	    .module('openprice.admin')
 	    .config(config);
 
-  /* @ngInject */
+  	/* @ngInject */
 	function config($stateProvider, $urlRouterProvider) {
 
 		$stateProvider
