@@ -8,7 +8,7 @@
     apiService.$inject = ['$rootScope', '$http', 'halClient', 'tokenStorage'];
 
     function apiService(   $rootScope,   $http,   halClient,   tokenStorage) {
-        var serverHost = 'http://104.197.47.140/';
+        var serverHost = 'http://104.197.47.140:7801/';
         var websiteResource = null,
             adminResource = null,
             userResource = null;
