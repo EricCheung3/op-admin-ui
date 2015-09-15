@@ -14,6 +14,10 @@ First you need to install and setup tools needed for local development. Prefer U
 
 Install [NodeJS 0.12.7](https://nodejs.org/)
 
+For some reason, the `.npm/_locks` get owner of root, need to change it so npm install can work.
+```
+sudo chown -R $USER .npm
+```
 ### Javascript Tools ###
 
 Install gulp and bower
@@ -45,7 +49,7 @@ Setup [SSH key for Bitbucket](https://confluence.atlassian.com/display/BITBUCKET
 ## Run OpenPrice AdminUI Project locally first time ##
 
 ### Checkout code ###
-Check out the code from Bitbucket 
+Check out the code from Bitbucket
 ```
 git clone git@bitbucket.org:groundtruthinc/openprice-admin-ui.git
 ```
@@ -66,7 +70,7 @@ gulp serve
 It will open a browser window and display the login page. You can login with your account.
 
 ## On-going Development Process ##
-The master branch is for production release, and for each developer, we are all working on 
+The master branch is for production release, and for each developer, we are all working on
 release branch, such as release1, release2, etc.
 
 
