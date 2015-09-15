@@ -3,11 +3,11 @@
 
     angular
         .module('openprice.admin')
-        .controller('HomeController', HomeController);
+        .controller('StartController', StartController);
 
     /* @ngInject */
-    function HomeController($log, $rootScope, $state, adminService ) {
-        $log.debug('==> HomeController');
+    function StartController($log, $rootScope, $state, adminService ) {
+        $log.debug('==> StartController');
 
         loadCurrentSigninUser();
 

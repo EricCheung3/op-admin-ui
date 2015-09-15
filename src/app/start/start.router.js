@@ -11,8 +11,8 @@
 		$stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: 'app/home/home.tmpl.html',
-                controller : 'HomeController',
+                templateUrl: 'app/start/start.tmpl.html',
+                controller : 'StartController',
                 controllerAs : 'vm'
             })
             ;
