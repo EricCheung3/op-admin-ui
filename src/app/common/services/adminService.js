@@ -6,8 +6,8 @@
         .factory('adminService', adminService);
 
     /* @ngInject */
-    function adminService($rootScope, $http, halClient, tokenStorage) {
-        var serverHost = 'http://104.197.47.140:7801/';
+    function adminService($log, $rootScope, $http, halClient, tokenStorage) {
+        var serverHost;
         var adminResource = null;
 
         return {
@@ -24,9 +24,9 @@
         };
 
         function authenticate(credentials, callback) {
-            console.log('adminService.authenticate() for '+credentials.username);
+            $log.debug('adminService.authenticate() for '+credentials.username);
 
-            $http.post(serverHost + 'api/signin', credentials)
+            $http.post(serverHost + '/api/signin', credentials)
                 .success( function(data, status, headers){
                     tokenStorage.store(headers('X-AUTH-TOKEN'));
                     reload(); // refresh websiteResource after login
@@ -45,17 +45,17 @@
         };
 
         function reload() {
-            console.log('==>Reload adminResource...');
+            $log.debug('==>Reload adminResource...');
             adminResource =
                 halClient
-                    .$get(serverHost + 'api/admin/')
+                    .$get(serverHost + '/api/admin/')
                     .then( function( resource ) {
                         $rootScope.authenticated = true;
                         $rootScope.currentUser = resource;
                         return resource;
                     }, function( err ) {
-                        console.log('Reload adminResource error ');
-                        console.log(err);
+                        $log.warn('Reload adminResource error ');
+                        $log.warn(err);
                         $rootScope.authenticated = false;
                         $rootScope.currentUser = null;
                         return null;

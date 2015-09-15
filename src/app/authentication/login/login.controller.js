@@ -42,7 +42,7 @@
                     $scope.error = false;
                     $state.go('triangular.admin-default.dashboard-general');
                 } else {
-                    $log.debug('Login failed')
+                    $log.warn('Login failed')
                     $scope.error = true; //TODO display error messages
                 }
             });
