@@ -23,7 +23,7 @@ gulp.task('partials', function () {
       }))
     )
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: 'app',
+      module: 'openprice.admin',
       root: 'app'
     }))
     .pipe(gulp.dest(paths.tmp + '/partials/'));
