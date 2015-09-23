@@ -8,6 +8,9 @@
     "RECEIPT-ADMIN": {
         "LIST-RECEIPTS": {
             "TITLE": "List all receipts"
+        },
+        "DISPLAY-RECEIPT": {
+            "TITLE": "Receipt details"
         }
 
     }

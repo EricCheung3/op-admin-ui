@@ -6,9 +6,10 @@
         .factory('adminService', adminService);
 
     /* @ngInject */
-    function adminService($log, $rootScope, $http, halClient, tokenStorage) {
+    function adminService($log, $rootScope, $q, $http, halClient, tokenStorage) {
         var serverHost;
         var adminResource = null;
+        var imageCache = [];
 
         return {
             'init' : init,
@@ -16,7 +17,8 @@
             'clear' : clear,
             'reload' : reload,
             'getResource' : getResource,
-            'getAdminResource' : getAdminResource
+            'getAdminResource' : getAdminResource,
+            'getImageBase64Data' : getImageBase64Data
         };
 
         function init(host) {
@@ -72,6 +74,28 @@
                 reload();
             }
             return adminResource;
+        };
+
+        function getImageBase64Data(downloadUrl) {
+            var deferred = $q.defer();
+            var imageData = imageCache[downloadUrl];
+            if (imageData) {
+                //console.log("Get image data from cache for "+downloadUrl);
+                deferred.resolve(imageData);
+            } else {
+                $http
+                .get(downloadUrl)
+                .then( function(base64) {
+                    imageData = "data:image/jpeg;base64,"+ base64.data;
+                    imageCache[downloadUrl] = imageData;
+                    //console.log("Download image data from server for "+downloadUrl);
+                    deferred.resolve(imageData);
+                }, function(err) {
+                    console.log("ERROR",err); // TODO handle error
+                });
+            }
+
+            return deferred.promise;
         };
 
     };

@@ -6,19 +6,20 @@
         .controller('ListReceiptsController', ListReceiptsController);
 
     /* @ngInject */
-    function ListReceiptsController(adminService) {
+    function ListReceiptsController($state, adminService) {
         var vm = this;
         vm.receipts = [];
         vm.page = {};
+        vm.showReceipt = showReceipt;
         vm.setup = setup;
         vm.pageChanged = pageChanged;
 
-        setup(0);
+        setup(0, 10);
 
-        function setup( pageNumber ) {
+        function setup( pageNumber, size ) {
             adminService.getAdminResource()
             .then( function(resource) {
-                return resource.$get('receipts', {'page': pageNumber, 'size':10, 'sort':null});
+                return resource.$get('receipts', {'page': pageNumber, 'size':size, 'sort':null});
             })
             .then( function(receipts)
             {
@@ -32,16 +33,20 @@
             })
             .then( function(receiptList)
             {
+                console.log(receiptList);
                 vm.receipts = receiptList;
             })
             ;
 
         };
 
-        function pageChanged() {
-            console.log("page changed to "+vm.page.currentPage)
-            setup(vm.page.currentPage - 1); //Spring HATEOAS page starts with 0
+        function pageChanged(page, limit) {
+            console.log('page changed to '+page + ', limit with '+limit)
+            setup(page-1, limit); //Spring HATEOAS page starts with 0
         };
 
+        function showReceipt(receiptId) {
+            $state.go('triangular.admin-default.receipt-detail',{receiptId:receiptId});
+        }
     }
 })();

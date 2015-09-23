@@ -16,11 +16,18 @@
             // set the controller to load for this page
             controller: 'ListReceiptsController',
             controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.receipt-detail', {
+            url: '/admin/receipts/:receiptId',
+            templateUrl: 'app/manage-receipt/display-receipt.tmpl.html',
+            // set the controller to load for this page
+            controller: 'DisplayReceiptController',
+            controllerAs: 'vm'
         });
 
         triMenuProvider.addMenu({
             name: 'MENU.RECEIPT-ADMIN.MODULE',
-            icon: 'icon-grade',
+            icon: 'icon-list',
             type: 'dropdown',
             priority: 2.2,
             children: [{
