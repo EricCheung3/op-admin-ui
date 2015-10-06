@@ -10,7 +10,7 @@
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
-        adminService.init('http://104.197.47.140:7801');
+        adminService.init('http://104.197.105.245:7801');
 
         $rootScope.logout = function() {
             adminService.clear();
