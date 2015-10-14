@@ -1,0 +1,51 @@
+<div layout="row" flex layout-padding layout-fill layout-align="center center">
+    <div flex="40" flex-lg="50" flex-md="70" flex-sm="100">
+        <md-dialog aria-label="Update">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Update User Profile</h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                      <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <form name="update">
+                <md-dialog-content class="md-padding">
+                    <div>
+                        <p>hhhhhhhhhhhhhhhhhh</p>
+                    </div>
+                </md-dialog-content>
+
+                <md-input-container>
+                    <label for="username" translate>LOGIN.USERNAME.LABEL</label>
+                    <input id="username" label="username" name="username" type="text" ng-model="vm.user.username" required/>
+                    <div ng-messages="login.username.$error" ng-if="login.username.$dirty">
+                        <div ng-message when="required"><span translate>LOGIN.USERNAME.PLEASE_ENTER</span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="username" translate>LOGIN.USERNAME.LABEL</label>
+                    <input id="username" label="username" name="username" type="text" ng-model="vm.user.username" required/>
+                    <div ng-messages="login.username.$error" ng-if="login.username.$dirty">
+                        <div ng-message when="required"><span translate>LOGIN.USERNAME.PLEASE_ENTER</span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="username" translate>LOGIN.USERNAME.LABEL</label>
+                    <input id="username" label="username" name="username" type="text" ng-model="vm.user.username" required/>
+                    <div ng-messages="login.username.$error" ng-if="login.username.$dirty">
+                        <div ng-message when="required"><span translate>LOGIN.USERNAME.PLEASE_ENTER</span></div>
+                    </div>
+                </md-input-container>
+
+                <div class="md-actions" layout="row">
+                    <span flex></span>
+                    <md-button ng-click="submit()">submit</md-button>
+                    <md-button ng-click="cancel()" style="margin-right:20px;">cancel</md-button>
+                </div>
+            </form>
+        </md-dialog>
+    </div>
+</div>

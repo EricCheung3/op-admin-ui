@@ -6,11 +6,11 @@
         .run(run);
 
     /* @ngInject */
-    function run($rootScope, $state, $stateParams, adminService) {
+    function run($rootScope, $state, $stateParams, adminService, API_CONFIG) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
-        adminService.init('http://104.197.47.140:7801');
+        adminService.init(API_CONFIG.url);
 
         $rootScope.logout = function() {
             adminService.clear();
