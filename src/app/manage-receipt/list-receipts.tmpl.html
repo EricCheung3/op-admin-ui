@@ -1,0 +1,36 @@
+<md-content class="padded-content-page">
+    <div>
+        <md-data-table-toolbar>
+            <h2 class="md-title" translate>RECEIPT-ADMIN.LIST-RECEIPTS.TITLE</h2>
+        </md-data-table-toolbar>
+
+        <md-data-table-container>
+            <table md-data-table md-progress="deferred">
+                <thead md-order="query.order" md-trigger="onOrderChange">
+                  <tr>
+                    <th name="Upload Time"></th>
+                    <th name="User"></th>
+                    <th name="Rating"></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr md-auto-select ng-repeat="receipt in vm.receipts">
+                    <td>{{receipt.uploadTimestamp}}</td>
+                    <td>{{receipt.user}}</td>
+                    <td>{{receipt.rating}}</td>
+                    <td><md-button class="md-icon-button md-accent" aria-label="Edit" ng-click="vm.showReceipt(receipt.id)">
+                            <md-icon md-svg-icon="assets/images/icons/ic_edit_black_24px.svg"></md-icon>
+
+                        </md-button>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+
+        <md-data-table-pagination md-limit="vm.page.size" md-page="vm.page.currentPage"
+            md-total="{{vm.page.totalElements}}" md-trigger="vm.pageChanged"></md-data-table-pagination>
+
+    </div>
+</md-content>

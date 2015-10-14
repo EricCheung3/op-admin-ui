@@ -20,7 +20,7 @@
 
         triMenuProvider.addMenu({
             name: 'MENU.USER-ADMIN.MODULE',
-            icon: 'icon-grade',
+            icon: 'icon-people',
             type: 'dropdown',
             priority: 2.2,
             children: [{

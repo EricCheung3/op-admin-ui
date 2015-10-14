@@ -1,0 +1,17 @@
+{
+    "MENU": {
+        "RECEIPT-ADMIN": {
+            "MODULE": "Manage Receipts",
+            "LIST-RECEIPT-PAGE": "Receipt List"
+        }
+    },
+    "RECEIPT-ADMIN": {
+        "LIST-RECEIPTS": {
+            "TITLE": "List all receipts"
+        },
+        "DISPLAY-RECEIPT": {
+            "TITLE": "Receipt details"
+        }
+
+    }
+}
