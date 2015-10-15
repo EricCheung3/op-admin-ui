@@ -9,9 +9,6 @@
             'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular',
             'uiGmapgoogle-maps', 'hljs', 'md.data.table',
             'angular-hal',
-            // 'seed-module'
-            // uncomment above to activate the example seed module
-            //'app.examples'
             'openprice.common',
             'openprice.authentication',
             'openprice.dashboards',
