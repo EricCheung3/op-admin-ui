@@ -10,5 +10,33 @@
             "TITLE": "List all users"
         }
 
+    },
+    "UPDATE": {
+        "TITLE": "UPDATE",
+        "USERNAME": {
+            "LABEL": "username",
+            "PLEASE_ENTER": "Please enter your username.",
+            "PLEASE_VALID": "Please enter a valid username."
+        },
+        "PROFILE": {
+            "FIRSTNAME": "first name",
+            "LASTNAME": "last name",
+            "MIDDLENAME": "middle name",
+            "PHONENO": "phone NO.",
+            "DISLAYNAME": "display name",
+            "ADDRESS":{
+                "LABEL": "address",
+                "ADDRESS1": "address1",
+                "ADDRESS2": "address2",
+                "CITY": "city",
+                "STATE": "state",
+                "ZIP": "zip code",
+                "COUNTRY": "country"
+            }
+        },
+        "MESSAGES": {
+            "ACCESS_DENIED": "Update ERROR",
+            "ACCESS_SUCCESS": "Update SUCCESSS."
+        }
     }
 }
