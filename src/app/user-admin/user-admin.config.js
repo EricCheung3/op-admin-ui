@@ -12,7 +12,7 @@
         $stateProvider
         .state('triangular.admin-default.user-list', {
             url: '/admin/users',
-            templateUrl: 'app/user-admin/list-users.tmpl.html',
+            templateUrl: 'app/user-admin/list-user/list-users.tmpl.html',
             // set the controller to load for this page
             controller: 'ListUsersController',
             controllerAs: 'vm'

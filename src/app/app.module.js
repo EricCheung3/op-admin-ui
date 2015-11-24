@@ -9,9 +9,6 @@
             'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular',
             'uiGmapgoogle-maps', 'hljs', 'md.data.table',
             'angular-hal',
-            // 'seed-module'
-            // uncomment above to activate the example seed module
-            //'app.examples'
             'openprice.common',
             'openprice.authentication',
             'openprice.dashboards',
@@ -34,6 +31,6 @@
         }])
         // set a constant for the API we are connecting to
         .constant('API_CONFIG', {
-            'url':  'http://104.197.47.140/'
+            'url':  'http://104.154.88.206:7801/'
         });
 })();
