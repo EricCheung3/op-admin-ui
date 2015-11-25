@@ -76,7 +76,7 @@
         <ul>
             <li ng-repeat="item in vm.uploader.queue">
                 Name: <span ng-bind="item.file.name"></span><br/>
-                <button ng-click="vm.upload(item)">upload</button>
+                <button ng-click="vm.uploadFile(item)">upload</button>
             </li>
         </ul>
     </div>

@@ -33,7 +33,6 @@
     "angular-material-data-table": "0.8.11",
     "angular-digest-hud": "~0.1.13",
     "angular-hal": "0.1.5",
-    "ng-file-upload": "~10.0.2",
     "angular-file-upload": "~2.2.0"
   },
   "devDependencies": {

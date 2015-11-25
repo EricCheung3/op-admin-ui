@@ -32,6 +32,6 @@
         }])
         // set a constant for the API we are connecting to
         .constant('API_CONFIG', {
-            'url':  'http://104.154.88.206:7801/'
+            'url':  'http://104.154.88.206:7801'
         });
 })();

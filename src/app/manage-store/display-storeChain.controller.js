@@ -26,16 +26,18 @@
         })
         .then( function(storeChain)
         {
-            //console.log(storeChain);
             vm.storeChain = storeChain;
             vm.uploader.url = vm.storeChain.catalogUploadUrl;
-            console.log(vm.uploader.url);
 
             loadBranches(0, 10);
             loadCatalogs(0, 10);
         })
         ;
 
+        vm.uploader.onSuccessItem = function(item, response, status, headers) {
+            console.log("Successfully uploaded "+item.file.name);
+            loadCatalogs(0, 10);
+        }
         function loadBranches( pageNumber, size ) {
             vm.storeChain.$get('branches', {'page': pageNumber, 'size':size, 'sort':null})
             .then( function(branches)
@@ -85,8 +87,8 @@
         };
 
         function uploadFile(item) {
+            console.log("upload "+item.file.name);
             item.upload();
-            loadCatalogs(0, 10);
         }
     }
 })();
