@@ -1,0 +1,84 @@
+<md-content class="padded-content-page">
+    <div layout="row" layout-align="center center">
+        <h2 class="md-title" translate>STORE-ADMIN.DISPLAY-STORECHAIN.TITLE</h2>
+    </div>
+    <div class="margin-20" layout="row">
+        <h4>Store Chain "{{vm.storeChain.name}}", code is '{{vm.storeChain.code}}'</h4>
+    </div>
+
+    <div class="margin-20" layout="row">
+        <h4>Branches</h4>
+    </div>
+    <div>
+        <md-data-table-container>
+            <table md-data-table md-progress="deferred">
+                <thead md-order="query.order" md-trigger="onOrderChange">
+                  <tr>
+                    <th name="Name"></th>
+                    <th name="Phone"></th>
+                    <th name="Address"></th>
+                    <th name="GST"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr md-auto-select ng-repeat="branch in vm.storeBranches">
+                    <td>{{branch.name}}</td>
+                    <td>{{branch.phone}}</td>
+                    <td>{{branch.address.address1}}</td>
+                    <td>{{branch.gstNumber}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+        <md-data-table-pagination md-limit="vm.branchPage.size" md-page="vm.branchPage.currentPage"
+            md-total="{{vm.branchPage.totalElements}}" md-trigger="vm.branchPageChanged"></md-data-table-pagination>
+
+    </div>
+
+    <div class="margin-20" layout="row">
+        <h4>Catalogs</h4>
+    </div>
+    <div>
+        <md-data-table-container>
+            <table md-data-table md-progress="deferred">
+                <thead md-order="query.order" md-trigger="onOrderChange">
+                  <tr>
+                    <th name="Code"></th>
+                    <th name="Name"></th>
+                    <th name="Number"></th>
+                    <th name="Category"></th>
+                    <th name="Price"></th>
+                    <th name="Natural Name"></th>
+                    <th name="Label Codes"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr md-auto-select ng-repeat="catalog in vm.catalogs">
+                    <td>{{catalog.code}}</td>
+                    <td>{{catalog.name}}</td>
+                    <td>{{catalog.number}}</td>
+                    <td>{{catalog.category}}</td>
+                    <td>{{catalog.price}}</td>
+                    <td>{{catalog.naturalName}}</td>
+                    <td>{{catalog.labelCodes}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+        <md-data-table-pagination md-limit="vm.catalogPage.size" md-page="vm.catalogPage.currentPage"
+            md-total="{{vm.catalogPage.totalElements}}" md-trigger="vm.catalogPageChanged"></md-data-table-pagination>
+    </div>
+
+    <div>
+        <h3>Upload Catalogs</h3>
+        <input type="file" nv-file-select uploader="vm.uploader"/><br/>
+        <h5>Upload queue</h5>
+        <ul>
+            <li ng-repeat="item in vm.uploader.queue">
+                Name: <span ng-bind="item.file.name"></span><br/>
+                <button ng-click="vm.upload(item)">upload</button>
+            </li>
+        </ul>
+    </div>
+
+</md-content>

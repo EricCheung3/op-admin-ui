@@ -6,7 +6,7 @@
         .controller('ListReceiptsController', ListReceiptsController);
 
     /* @ngInject */
-    function ListReceiptsController($state, adminService) {
+    function ListReceiptsController($q, $state, adminService) {
         var vm = this;
         vm.receipts = [];
         vm.page = {};

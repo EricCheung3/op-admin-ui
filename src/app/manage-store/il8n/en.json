@@ -1,0 +1,17 @@
+{
+    "MENU": {
+        "STORE-ADMIN": {
+            "MODULE": "Manage Stores",
+            "LIST-STORECHAIN-PAGE": "Store Chain List"
+        }
+    },
+    "STORE-ADMIN": {
+        "LIST-STORECHAINS": {
+            "TITLE": "List all store chains"
+        },
+        "DISPLAY-STORECHAIN": {
+            "TITLE": "Store chain details"
+        }
+
+    }
+}
