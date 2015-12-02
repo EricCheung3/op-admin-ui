@@ -6,11 +6,12 @@
         .run(run);
 
     /* @ngInject */
-    function run($rootScope, $state, $stateParams, adminService, API_CONFIG) {
+    function run($rootScope, $state, $stateParams, adminService, EnvironmentConfig) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
-        adminService.init(API_CONFIG.url);
+        console.log(EnvironmentConfig.api);
+        adminService.init(EnvironmentConfig.api);
 
         $rootScope.logout = function() {
             adminService.clear();

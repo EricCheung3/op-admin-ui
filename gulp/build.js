@@ -8,6 +8,16 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
 
+var gulpNgConfig = require('gulp-ng-config');
+var args = require('yargs').argv;
+
+gulp.task('config', function () {
+  var env = args.env || 'development';
+  gulp.src(paths.src + '/app/config.json')
+  .pipe(gulpNgConfig('openprice.config', {environment: env}))
+  .pipe(gulp.dest(paths.src+'/app'))
+});
+
 gulp.task('partials', function () {
   return gulp.src([
     paths.src + '/app/**/*.html',
@@ -93,6 +103,7 @@ gulp.task('data', function () {
     .pipe($.size());
 });
 
+// what is that?
 gulp.task('examplejs', function () {
   return gulp.src('src/**/examples/*.{js,scss}')
     .pipe(gulp.dest(paths.dist + '/'))
@@ -115,4 +126,4 @@ gulp.task('clean', function (done) {
   $.del([paths.dist + '/', paths.tmp + '/'], done);
 });
 
-gulp.task('buildapp', ['html', 'images', 'fonts', 'translations', 'misc', 'data', 'examplejs']);
+gulp.task('buildapp', ['config', 'html', 'images', 'fonts', 'translations', 'misc', 'data', 'examplejs']);

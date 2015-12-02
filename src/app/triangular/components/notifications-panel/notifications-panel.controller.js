@@ -6,7 +6,7 @@
         .controller('NotificationsPanelController', NotificationsPanelController);
 
     /* @ngInject */
-    function NotificationsPanelController($scope, $http, $mdSidenav, $state, API_CONFIG) {
+    function NotificationsPanelController($scope, $http, $mdSidenav, $state) {
         var vm = this;
         // sets the current active tab
         vm.close = close;
@@ -157,14 +157,6 @@
         $scope.$on('triSwitchNotificationTab', function($event, tab) {
             vm.currentTab = tab;
         });
-
-        // fetch some dummy emails from the API
-        // $http({
-        //     method: 'GET',
-        //     url: API_CONFIG.url + 'email/inbox'
-        // }).success(function(data) {
-        //     vm.emails = data.slice(1,20);
-//        });
 
         function openMail() {
             $state.go('private.admin.toolbar.inbox');
