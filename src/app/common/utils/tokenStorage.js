@@ -6,7 +6,7 @@
         .factory('tokenStorage', tokenStorage);
 
     function tokenStorage() {
-        var storageKey = 'openprice_auth_token';
+        var storageKey = 'openprice_admin_auth_token';
         return {
             store : function(token) {
                 if (token) {
