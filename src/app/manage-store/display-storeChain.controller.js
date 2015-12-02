@@ -38,6 +38,7 @@
             console.log("Successfully uploaded "+item.file.name);
             loadCatalogs(0, 10);
         }
+
         function loadBranches( pageNumber, size ) {
             vm.storeChain.$get('branches', {'page': pageNumber, 'size':size, 'sort':null})
             .then( function(branches)
@@ -55,7 +56,6 @@
                 vm.storeBranches = branchList;
             })
             ;
-
         };
 
         function branchPageChanged(page, limit) {
@@ -79,7 +79,6 @@
                 vm.catalogs = catalogList;
             })
             ;
-
         };
 
         function catalogPageChanged(page, limit) {
@@ -87,7 +86,7 @@
         };
 
         function uploadFile(item) {
-            console.log("upload "+item.file.name);
+            //console.log("upload "+item.file.name);
             item.upload();
         }
     }
