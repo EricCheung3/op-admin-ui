@@ -68,8 +68,8 @@
             {
                 vm.catalogPage = catalogs.page;
                 vm.catalogPage.currentPage = catalogs.page.number + 1;
-                if (catalogs.$has('catalogs')) {
-                    return catalogs.$get('catalogs');
+                if (catalogs.$has('catalogProducts')) {
+                    return catalogs.$get('catalogProducts');
                 }
                 vm.catalogs = [];
                 return $q.reject("no catalogs!");
