@@ -63,9 +63,9 @@ bower install
 ```
 
 ### Run with Browser ###
-You can run OpenPrice AdminUI app inside browser:
+You can run OpenPrice AdminUI app inside browser with local api servers running in docker :
 ```
-gulp serve
+gulp serve --env localdocker
 ```
 It will open a browser window and display the login page. You can login with your account.
 
