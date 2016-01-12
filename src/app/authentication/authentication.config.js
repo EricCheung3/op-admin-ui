@@ -40,7 +40,7 @@
         })
         .state('triangular.admin-default.profile', {
             url: '/profile',
-            templateUrl: 'app/examples/authentication/profile/profile.tmpl.html',
+            templateUrl: 'app/authentication/profile/profile.tmpl.html',
             controller: 'ProfileController',
             controllerAs: 'vm'
         });
