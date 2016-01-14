@@ -62,7 +62,7 @@
 
     } // end of ListUsersController
 
-    function UpdateController($scope, $mdDialog, userProfile, $http, $state, API_CONFIG) {
+    function UpdateController($scope, $mdDialog, userProfile, $http, $state) {
         $scope.userProfile = userProfile;
 
         $scope.userInfo = {
