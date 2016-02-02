@@ -16,12 +16,15 @@
         .then( function(resource) {
             return resource.$get('receipt', {'receiptId': $stateParams.receiptId});
         })
-        .then( function(receipt)
-        {
+        .then( function(receipt){
             vm.receipt = receipt;
-            // add 'path' property to each image
-            receipt.images.forEach( function(image) {
-                adminService.getImageBase64Data(image._links.base64.href)
+            return receipt.$get('receiptImages');
+        })
+        .then( function(images){
+            vm.receipt.images = images;
+            //FIXME: because of 403 downloadUrl: add 'path' property through base64Url
+            images.forEach( function(image) {
+                adminService.getImageBase64Data(image.base64Url)
                 .then( function(imageData) {
                     image.path = imageData;
                 });
