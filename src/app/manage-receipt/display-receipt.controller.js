@@ -31,6 +31,7 @@
             });
 
             loadReceiptResults(0, 10);
+            loadReceiptFeedbacks(0, 10);
         })
         ;
 
@@ -71,6 +72,24 @@
             loadReceiptResults(page-1, limit); //Spring HATEOAS page starts with 0
         };
 
+        function loadReceiptFeedbacks(pageNumber, size){
+            vm.receipt.$get('feedbacks', {'page': pageNumber, 'size':size, 'sort':null})
+            .then(function (feedbacks) {
+                vm.feedbackPage = feedbacks.page;
+                vm.feedbackPage.currentPage = feedbacks.page.number + 1;
+                if (feedbacks.$has('receiptFeedbacks')) {
+                    return feedbacks.$get('receiptFeedbacks');
+                }
+                vm.receipt.feedbacks = [];
+                return $q.reject('no results!');
+            })
+            .then(function (feedbackList) {
+                vm.receipt.feedbacks = feedbackList;
+                feedbackList.forEach( function(feedback){
+                    console.log("feedback", feedback);
+                });
+            });
+        }
 
     }
 })();
