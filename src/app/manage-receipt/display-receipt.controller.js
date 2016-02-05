@@ -10,7 +10,7 @@
         var vm = this;
         vm.receipt = {};
         vm.imageCache = [];
-
+        vm.deleteReceiptFeedback = deleteReceiptFeedback;
 
         adminService.getAdminResource()
         .then( function(resource) {
@@ -89,6 +89,11 @@
                     console.log("feedback", feedback);
                 });
             });
+        }
+
+        function deleteReceiptFeedback(feedback) {
+            feedback.$del('self');
+            vm.receipt.feedbacks.splice(feedback, 1);
         }
 
     }
