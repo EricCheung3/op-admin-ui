@@ -70,5 +70,31 @@
         <md-data-table-pagination md-limit="vm.resultPage.size" md-page="vm.resultPage.currentPage"
             md-total="{{vm.resultPage.totalElements}}" md-trigger="vm.resultPageChanged"></md-data-table-pagination>
     </div>
-
+    <div class="margin-20" layout="row">
+        <h4>Feedbacks of the receipt</h4>
+    </div>
+    <div>
+        <table md-data-table md-progress="deferred">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Rating</th>
+                <th>Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat-start="feedback in vm.receipt.feedbacks">
+                <td>{{feedback.id}}</td>
+                <td>{{feedback.rating}}</td>
+                <td>{{feedback.comment}}</td>
+                <td><md-button class="button-assertive swipe-button" aria-label="Delete" ng-click="vm.deleteReceiptFeedback(feedback)">
+                        <!-- the delete icon should be designed [a delete icon] -->
+                        <md-icon md-svg-icon="assets/images/icons/ic_edit_black_24px.svg"></md-icon>
+                    </md-button>
+                </td>
+              </tr>
+              <tr ng-repeat-end>
+            </tbody>
+        </table>
+    </div>
 </md-content>
