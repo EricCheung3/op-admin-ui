@@ -6,11 +6,12 @@
         .controller('DisplayReceiptController', DisplayReceiptController);
 
     /* @ngInject */
-    function DisplayReceiptController($q, $stateParams, adminService) {
+    function DisplayReceiptController($q, $stateParams, adminService, $state) {
         var vm = this;
         vm.receipt = {};
         vm.imageCache = [];
         vm.deleteReceiptFeedback = deleteReceiptFeedback;
+        vm.showReceiptResultDetail = showReceiptResultDetail;
 
         adminService.getAdminResource()
         .then( function(resource) {
@@ -41,8 +42,8 @@
             {
                 vm.resultPage = results.page;
                 vm.resultPage.currentPage = results.page.number + 1;
-                if (results.$has('receiptDatas')) {
-                    return results.$get('receiptDatas');
+                if (results.$has('receiptResults')) {
+                    return results.$get('receiptResults');
                 }
                 vm.receipt.results = [];
                 return $q.reject('no results!');
@@ -72,6 +73,10 @@
             loadReceiptResults(page-1, limit); //Spring HATEOAS page starts with 0
         };
 
+        function showReceiptResultDetail(index) {
+            $state.go('triangular.admin-default.receipt-result-detail',{receiptId:$stateParams.receiptId, index:index});
+        };
+
         function loadReceiptFeedbacks(pageNumber, size){
             vm.receipt.$get('feedbacks', {'page': pageNumber, 'size':size, 'sort':null})
             .then(function (feedbacks) {
@@ -89,12 +94,12 @@
                     console.log("feedback", feedback);
                 });
             });
-        }
+        };
 
         function deleteReceiptFeedback(feedback) {
             feedback.$del('self');
             vm.receipt.feedbacks.splice(feedback, 1);
-        }
+        };
 
     }
 })();
