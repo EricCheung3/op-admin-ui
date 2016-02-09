@@ -65,6 +65,23 @@
                         result.receiptItems = itemList;
                     })
                 });
+                // Receipt Result Fields
+                resultList.forEach( function(result){
+                    result.$get('fields', {'page': 0, 'size':100, 'sort':null})
+                    .then( function (fields){
+                        if (fields.$has('receiptFields')) {
+                            return fields.$get('receiptFields');
+                        }
+                        result.receiptFields = [];
+                        return $q.reject('no items!');
+                    })
+                    .then( function(fieldList){
+                        result.receiptFields = fieldList;
+                        fieldList.forEach( function(field){
+                            console.log("field", field);
+                        });
+                    })
+                });
             })
             ;
         };
