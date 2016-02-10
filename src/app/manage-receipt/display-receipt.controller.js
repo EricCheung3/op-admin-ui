@@ -12,6 +12,7 @@
         vm.imageCache = [];
         vm.deleteReceiptFeedback = deleteReceiptFeedback;
         vm.showReceiptResultDetail = showReceiptResultDetail;
+        vm.parseReceipt = parseReceipt;
 
         adminService.getAdminResource()
         .then( function(resource) {
@@ -72,10 +73,6 @@
             loadReceiptResults(page-1, limit); //Spring HATEOAS page starts with 0
         };
 
-        function showReceiptResultDetail(index) {
-            $state.go('triangular.admin-default.receipt-result-detail',{receiptId:$stateParams.receiptId, index:index});
-        };
-
         function loadReceiptFeedbacks(pageNumber, size){
             vm.receipt.$get('feedbacks', {'page': pageNumber, 'size':size, 'sort':null})
             .then(function (feedbacks) {
@@ -100,5 +97,13 @@
             vm.receipt.feedbacks.splice(feedback, 1);
         };
 
+        function showReceiptResultDetail(index) {
+            $state.go('triangular.admin-default.receipt-result-detail',{receiptId:$stateParams.receiptId, index:index});
+        };
+
+        function parseReceipt(receiptId) {
+            // vm.receipt.$post(receiptId+'/results', {}, {});
+            // call backend to run parser
+        };
     }
 })();

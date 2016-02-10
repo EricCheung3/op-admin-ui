@@ -69,6 +69,11 @@
             ;
         };
 
+        function joinWith() {
+
+        };
+
+
         function resultPageChanged(page, limit) {
             loadReceiptResults(page-1, limit); //Spring HATEOAS page starts with 0
         };

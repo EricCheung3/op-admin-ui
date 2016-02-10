@@ -18,7 +18,7 @@
     </div>
 
     <div class="margin-20" layout="row">
-        <h4>Parser results:</h4> 
+        <h4>Parser results:</h4>
     </div>
     <div>
         <md-data-table-container>
@@ -41,6 +41,8 @@
                     <td><md-button class="md-icon-button md-accent" aria-label="Edit" ng-click="vm.showReceiptResultDetail(index)">
                             <md-icon md-svg-icon="assets/images/icons/ic_edit_black_24px.svg"></md-icon>
                         </md-button>
+                    </td>
+                    <td><md-button ng-click="vm.parseReceipt(vm.receipt.id)"> Parse receipt </md-button>
                     </td>
                   </tr>
                   <tr ng-repeat-end>

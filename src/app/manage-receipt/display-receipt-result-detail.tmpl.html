@@ -23,7 +23,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="field in vm.result.receiptFields | orderBy: 'lineNumber'">
+              <tr ng-repeat="field in vm.result.fieldMap.receiptFields | orderBy: 'lineNumber'">
                 <td>{{field.lineNumber}}</td>
                 <td>{{vm.ocrResult[field.lineNumber]}}</td>
                 <td>{{field.value}}</td>
@@ -95,7 +95,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="field in vm.result.receiptFields | orderBy: 'lineNumber'">
+              <tr ng-repeat="field in vm.result.fieldMap.receiptFields | orderBy: 'lineNumber'">
                   <td>{{field.lineNumber}}</td>
                   <td>{{field.value}}</td>
                   <td>{{field.type}}</td>
@@ -116,8 +116,8 @@
         </table>
       </md-data-table-container>
     </td>
-    <table md-data-table md-progress="deferred">
-  <md-data-table-container>
+  </table md-data-table md-progress="deferred">
+</md-data-table-container>
 
   <md-data-table-pagination md-limit="vm.resultPage.size" md-page="vm.resultPage.currentPage"
       md-total="{{vm.resultPage.totalElements}}" md-trigger="vm.resultPageChanged">
