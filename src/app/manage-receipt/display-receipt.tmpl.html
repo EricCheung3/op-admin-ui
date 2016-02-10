@@ -18,7 +18,7 @@
     </div>
 
     <div class="margin-20" layout="row">
-        <h4>Parser results:</h4>
+        <h4>Parser results:</h4> 
     </div>
     <div>
         <md-data-table-container>
@@ -38,7 +38,7 @@
                     <td>{{result.branchName}}</td>
                     <td>{{result.parsedTotal}}</td>
                     <td>{{result.parsedDate}}</td>
-                    <td><md-button class="md-icon-button md-accent" aria-label="Edit" ng-click="vm.showReceiptResultDetail(index, result)">
+                    <td><md-button class="md-icon-button md-accent" aria-label="Edit" ng-click="vm.showReceiptResultDetail(index)">
                             <md-icon md-svg-icon="assets/images/icons/ic_edit_black_24px.svg"></md-icon>
                         </md-button>
                     </td>
@@ -48,51 +48,6 @@
                 </tbody>
             </table>
         </md-data-table-container>
-    </div>
-    <!-- Result Field -->
-    <div class="margin-20" layout="row">
-        <h4>Result Fields of the receipt</h4>
-    </div>
-    <div>
-        <table md-data-table md-progress="deferred">
-            <thead>
-              <tr>
-                <th>Chain Code</th>
-                <th>Branch Name</th>
-                <th>Parsed Total</th>
-                <th>Parsed Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat-start="result in vm.receipt.results">
-                <td>{{result.chainCode}}</td>
-                <td>{{result.branchName}}</td>
-                <td>{{result.parsedTotal}}</td>
-                <td>{{result.parsedDate}}</td>
-              </tr>
-              <tr ng-repeat-end>
-                <td colspan="3">Receipt Field Lists:
-                  <md-data-table-container>
-                    <table md-data-table md-progress="deferred">
-                        <thead>
-                            <tr>
-                              <th>Type</th>
-                              <th>Value</th>
-                              <th>Line Number</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="field in result.receiptFields">
-                              <td>{{field.type}}</td>
-                              <td>{{field.value}}</td>
-                              <th>{{field.lineNumber}}</th>
-                            </tr>
-                        </tbody>
-                      </table>
-                    </md-data-table-container>
-                  </td>
-            </tbody>
-        </table>
     </div>
     <!-- Feedback  -->
     <div class="margin-20" layout="row">

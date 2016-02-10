@@ -1,55 +1,121 @@
 <md-content class="padded-content-page">
-<div class="margin-20" layout="row">
-    <h4>Parser results:</h4>
-</div>
-<div>
-  <md-data-table-container>
+  <div class="margin-20" layout="row">
+      <h4>Parser results:</h4>
+  </div>
+  <div>
+    <p>Chain Code: {{vm.result.chainCode}}</p>
+    <p>Branch Name: {{vm.result.branchName}}</p>
+    <p>Parsed Total: {{vm.result.parsedTotal}}</p>
+    <p>Parsed Date: {{vm.result.parsedDate}}</p>
+  </div>
+
+  <div class="margin-20" layout="row">
+      <h4>Result fields:</h4>
+  </div>
+  <div>
+    <md-data-table-container>
       <table md-data-table md-progress="deferred">
           <thead>
-            <tr>
-              <th>Chain Code</th>
-              <th>Branch Name</th>
-              <th>Parsed Total</th>
-              <th>Parsed Date</th>
-            </tr>
+              <tr>
+                <th>Line Number</th>
+                <th>OCR result</th>
+                <th>Value</th>
+              </tr>
           </thead>
           <tbody>
-            <!-- FIXME: need to use 'index' to control each receipt image -->
-            <tr ng-repeat-start="(index,result) in vm.receipt.results">
-              <td>{{result.chainCode}}</td>
-              <td>{{result.branchName}}</td>
-              <td>{{result.parsedTotal}}</td>
-              <td>{{result.parsedDate}}</td>
-            </tr>
-            <tr ng-repeat-end>
-              <td colspan="4">Receipt Item Lists:
-                <md-data-table-container>
-                  <table md-data-table md-progress="deferred">
-                      <thead>
-                          <tr>
-                              <th>Catalog Code</th>
-                              <th>Parsed Name</th>
-                              <th>Display Name</th>
-                              <th>Parsed Price</th>
-                              <th>Display Price</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr ng-repeat="item in result.receiptItems">
-                              <td>{{item.catalogCode}}</td>
-                              <td>{{item.parsedName}}</td>
-                              <td>{{item.displayName}}</td>
-                              <td>{{item.parsedPrice}}</td>
-                              <td>{{item.displayPrice}}</td>
-                          </tr>
-                      </tbody>
-                    </table>
-                  </md-data-table-container>
-                </td>
-            </tr>
+              <tr ng-repeat="field in vm.result.fieldMap.receiptFields | orderBy: 'lineNumber'">
+                <td>{{field.lineNumber}}</td>
+                <td>{{vm.ocrResult[field.lineNumber]}}</td>
+                <td>{{field.value}}</td>
+              </tr>
           </tbody>
       </table>
   </md-data-table-container>
+  </div>
+
+  <div class="margin-20" layout="row">
+      <h4>Result items:</h4>
+  </div>
+  <div>
+    <md-data-table-container>
+      <table md-data-table md-progress="deferred">
+        <thead>
+            <tr>
+                <th>Line Number</th>
+                <th>OCR result</th>
+                <th>Parsed Name</th>
+                <th>Parsed Price</th>
+                <th>Catalog Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in vm.result.receiptItems | orderBy: 'lineNumber'">
+                <td>{{item.lineNumber}}</td>
+                <td>{{vm.ocrResult[item.lineNumber]}}</td>
+                <td>{{item.parsedName}}</td>
+                <td>{{item.parsedPrice}}</td>
+                <td>{{item.catalogCode}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </md-data-table-container>
+  <div>
+
+  <div class="margin-20" layout="row">
+      <h3>Combine OCR results and Parser results:</h3>
+  </div>
+  <md-data-table-container>
+    <table md-data-table md-progress="deferred">
+    <td>
+      <md-data-table-container>
+        <table md-data-table md-progress="deferred">
+          <thead>
+              <tr>
+                  <th>Line Number</th>
+                  <th>OCR result</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="(index, result) in vm.ocrResult track by $index">
+                  <td>{{index}}</td>
+                  <td>{{result}}</td>
+              </tr>
+          </tbody>
+        </table>
+      </md-data-table-container>
+    </td>
+    <td>
+      <md-data-table-container>
+        <table md-data-table md-progress="deferred">
+          <thead>
+              <tr>
+                  <th>Line Number</th>
+                  <th>Value</th>
+                  <th> index </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="field in vm.result.fieldMap.receiptFields | orderBy: 'lineNumber'">
+                  <td>{{field.lineNumber}}</td>
+                  <td>{{field.value}}</td>
+                  <td>{{field.type}}</td>
+              </tr>
+              <tr>
+                  <th>Line Number</th>
+                  <th>Parsed Name</th>
+                  <th>Parsed Price</th>
+              </tr>
+              <tr ng-repeat="item in vm.result.receiptItems | orderBy: 'lineNumber'">
+                  <td>{{item.lineNumber}}</td>
+                  <td>{{item.parsedName}}</td>
+                  <td>{{item.parsedPrice}}</td>
+              </tr>
+          </tbody>
+        </table>
+      </md-data-table-container>
+    </td>
+    <table md-data-table md-progress="deferred">
+  <md-data-table-container>
 
   <md-data-table-pagination md-limit="vm.resultPage.size" md-page="vm.resultPage.currentPage"
       md-total="{{vm.resultPage.totalElements}}" md-trigger="vm.resultPageChanged">

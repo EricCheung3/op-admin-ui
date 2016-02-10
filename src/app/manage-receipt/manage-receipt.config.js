@@ -28,7 +28,7 @@
             url: '/admin/receipts/:receiptId/:index',
             templateUrl: 'app/manage-receipt/display-receipt-result-detail.tmpl.html',
             // set the controller to load for this page
-            controller: 'DisplayReceiptController',
+            controller: 'DisplayReceiptDetailController',
             controllerAs: 'vm'
         });
 
