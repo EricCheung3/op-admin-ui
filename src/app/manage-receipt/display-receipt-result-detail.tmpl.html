@@ -23,7 +23,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="field in vm.result.fieldMap.receiptFields | orderBy: 'lineNumber'">
+              <tr ng-repeat="field in vm.result.receiptFields | orderBy: 'lineNumber'">
                 <td>{{field.lineNumber}}</td>
                 <td>{{vm.ocrResult[field.lineNumber]}}</td>
                 <td>{{field.value}}</td>
@@ -90,12 +90,12 @@
           <thead>
               <tr>
                   <th>Line Number</th>
-                  <th>Value</th>
-                  <th> index </th>
+                  <th>Parsed Value</th>
+                  <th>Field Type</th>
               </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="field in vm.result.fieldMap.receiptFields | orderBy: 'lineNumber'">
+              <tr ng-repeat="field in vm.result.receiptFields | orderBy: 'lineNumber'">
                   <td>{{field.lineNumber}}</td>
                   <td>{{field.value}}</td>
                   <td>{{field.type}}</td>
@@ -104,11 +104,13 @@
                   <th>Line Number</th>
                   <th>Parsed Name</th>
                   <th>Parsed Price</th>
+                  <th>Catalog Code</th>
               </tr>
               <tr ng-repeat="item in vm.result.receiptItems | orderBy: 'lineNumber'">
                   <td>{{item.lineNumber}}</td>
                   <td>{{item.parsedName}}</td>
                   <td>{{item.parsedPrice}}</td>
+                  <td>{{item.catalogCode}}</td>
               </tr>
           </tbody>
         </table>
