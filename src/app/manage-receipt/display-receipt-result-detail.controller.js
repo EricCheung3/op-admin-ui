@@ -64,13 +64,43 @@
             .then(function () {
                 vm.result = vm.receipt.results[$stateParams.index];
                 vm.ocrResult = vm.receipt.images[$stateParams.index].ocrResult.split('\n');
-                // console.log("result", vm.ocrResult);
-            })
-            ;
+                // console.log("ocrResult", vm.ocrResult);
+                // console.log("receiptFields", vm.result.receiptFields);
+                vm.result.$get('receiptItems')
+                .then(function(items) {
+                  joinWith(vm.ocrResult, vm.result.receiptFields, items);
+                }).then(function(argument) {
+                    console.log(vm.ocrResult[5].ocrResult);
+                })
+
+            });
         };
 
-        function joinWith() {
 
+        function joinWith(ocrResults, fields, items) {
+          for(var field in fields) {
+            for(var line in ocrResults) {
+               if(line == fields[field].lineNumber){
+                  var parseResult = {};
+                  parseResult.ocrResult = ocrResults[line];
+                  parseResult.field = fields[field];
+                  ocrResults[line] = parseResult;
+                  // console.log("ocrResults[line]", ocrResults[line]);
+               }
+            }
+          }
+          // add items
+          for(var item in items){
+            for(var line in ocrResults) {
+               if(line == items[item].lineNumber){
+                  var parseResult = {};
+                  parseResult.ocrResult = ocrResults[line];
+                  parseResult.item = items[item];
+                  ocrResults[line] = parseResult;
+                  console.log("ocrResults[line]", ocrResults[line]);
+               }
+            }
+          }
         };
 
 
