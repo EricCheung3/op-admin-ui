@@ -5,18 +5,6 @@
     <div class="margin-20" layout="row" layout-align="center center">
         <h4>Receipt from {{vm.receipt.user}} uploaded at {{vm.receipt.uploadTimestamp}}</h4>
     </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <md-list>
-            <md-subheader class="md-no-sticky">Receipt Images</md-subheader>
-            <md-list-item class="md-3-line" ng-repeat="image in vm.receipt.images">
-                <img ng-src="{{image.path}}" class="receipt-image-big" />
-                <div class="md-list-item-text">
-                    <pre hightlight lang="text" size="xsmall">{{image.ocrResult}}</pre>
-                </div>
-            </md-list-item>
-        </md-list>
-    </div>
-
     <div class="margin-20" layout="row">
         <h4>Parser results:</h4>
     </div>
@@ -33,7 +21,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat-start="(index,result) in vm.receipt.results">
+                  <tr ng-repeat ="(index,result) in vm.receipt.results">
                     <td>{{result.chainCode}}</td>
                     <td>{{result.branchName}}</td>
                     <td>{{result.parsedTotal}}</td>
@@ -44,8 +32,6 @@
                     </td>
                     <td><md-button ng-click="vm.parseReceipt(vm.receipt.id)"> Parse receipt </md-button>
                     </td>
-                  </tr>
-                  <tr ng-repeat-end>
                   </tr>
                 </tbody>
             </table>
@@ -77,5 +63,16 @@
               <tr ng-repeat-end>
             </tbody>
         </table>
+    </div>
+    <div class="margin-20" layout="row" layout-align="center center">
+        <md-list>
+            <md-subheader class="md-no-sticky">Receipt Images</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="image in vm.receipt.images">
+                <img ng-src="{{image.path}}" class="receipt-image-big" />
+                <div class="md-list-item-text">
+                    <pre hightlight lang="text" size="xsmall">{{image.ocrResult}}</pre>
+                </div>
+            </md-list-item>
+        </md-list>
     </div>
 </md-content>
