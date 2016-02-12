@@ -14,12 +14,13 @@
   </div>
   <div>
     <md-data-table-container>
-      <table md-data-table md-progress="deferred">
+      <table md-data-table >
           <thead>
               <tr>
                 <th>Line Number</th>
                 <th>OCR Result</th>
-                <th style="color:#FF0000">Field</th>
+                <th style="color:#FF0000">Field Type</th>
+                <th style="color:#FF0000">Field Value</th>
                 <th style="color:#0000FF">Item Name</th>
                 <th style="color:#0000FF">Item Price</th>
                 <th style="color:#0000FF">Catalog Code</th>
@@ -30,6 +31,7 @@
                 <td>{{index}}</td>
                 <td ng-if="line.ocrResult===undefined">{{line}}</td>
                 <td ng-if="line.ocrResult!==undefined"  style="color:#00FF00">{{line.ocrResult}}</td>
+                <td style="color:#FF0000">{{line.field.type}}</td> <!--red-->
                 <td style="color:#FF0000">{{line.field.value}}</td> <!--red-->
                 <td style="color:#0000FF">{{line.item.parsedName}}</td><!--blue-->
                 <td style="color:#0000FF">{{line.item.parsedPrice}}</td>
