@@ -88,7 +88,6 @@
                   parseResult.ocrResult = ocrResults[line];
                   parseResult.item = items[item];
                   ocrResults[line] = parseResult;
-                  console.log("ocrResults[line]", ocrResults[line]);
                }
             }
           }

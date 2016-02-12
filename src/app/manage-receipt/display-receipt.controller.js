@@ -52,6 +52,7 @@
             .then( function(resultList)
             {
                 vm.receipt.results = resultList;
+                console.log("parsed results:", resultList);
                 resultList.forEach( function(result){
                     result.$get('items', {'page': 0, 'size':100, 'sort':null})
                     .then( function (items){
@@ -86,9 +87,6 @@
             })
             .then(function (feedbackList) {
                 vm.receipt.feedbacks = feedbackList;
-                feedbackList.forEach( function(feedback){
-                    console.log("feedback", feedback);
-                });
             });
         };
 
@@ -102,8 +100,11 @@
         };
 
         function parseReceipt(receiptId) {
-            // vm.receipt.$post(receiptId+'/results', {}, {});
-            // call backend to run parser
+            vm.receipt.$post('results', {}, {})
+            .then( function(location){
+                var resultId = location.substring(location.lastIndexOf('/') + 1);
+                console.log(resultId);
+            });
         };
     }
 })();
