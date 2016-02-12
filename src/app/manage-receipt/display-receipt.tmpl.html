@@ -5,18 +5,6 @@
     <div class="margin-20" layout="row" layout-align="center center">
         <h4>Receipt from {{vm.receipt.user}} uploaded at {{vm.receipt.uploadTimestamp}}</h4>
     </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <md-list>
-            <md-subheader class="md-no-sticky">Receipt Images</md-subheader>
-            <md-list-item class="md-3-line" ng-repeat="image in vm.receipt.images">
-                <img ng-src="{{image.path}}" class="receipt-image-big" />
-                <div class="md-list-item-text">
-                    <pre hightlight lang="text" size="xsmall">{{image.ocrResult}}</pre>
-                </div>
-            </md-list-item>
-        </md-list>
-    </div>
-
     <div class="margin-20" layout="row">
         <h4>Parser results:</h4>
     </div>
@@ -29,47 +17,27 @@
                     <th>Branch Name</th>
                     <th>Parsed Total</th>
                     <th>Parsed Date</th>
+                    <th>Result Detail</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat-start="result in vm.receipt.results">
+                  <tr ng-repeat ="(index,result) in vm.receipt.results">
                     <td>{{result.chainCode}}</td>
                     <td>{{result.branchName}}</td>
                     <td>{{result.parsedTotal}}</td>
                     <td>{{result.parsedDate}}</td>
-                  </tr>
-                  <tr ng-repeat-end>
-                    <td colspan="4">Receipt Item Lists:
-                      <md-data-table-container>
-                        <table md-data-table md-progress="deferred">
-                            <thead>
-                                <tr>
-                                    <th>Catalog Code</th>
-                                    <th>Parsed Name</th>
-                                    <th>Display Name</th>
-                                    <th>Parsed Price</th>
-                                    <th>Display Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in result.receiptItems">
-                                    <td>{{item.catalogCode}}</td>
-                                    <td>{{item.parsedName}}</td>
-                                    <td>{{item.displayName}}</td>
-                                    <td>{{item.parsedPrice}}</td>
-                                    <td>{{item.displayPrice}}</td>
-                                </tr>
-                            </tbody>
-                          </table>
-                        </md-data-table-container>
-                      </td>
+                    <td><md-button class="md-icon-button md-accent" aria-label="Edit" ng-click="vm.showReceiptResultDetail(index)">
+                            <md-icon md-svg-icon="assets/images/icons/ic_edit_black_24px.svg"></md-icon>
+                        </md-button>
+                    </td>
+                    <td><md-button ng-click="vm.parseReceipt(vm.receipt.id)"> Parse receipt </md-button>
+                    </td>
                   </tr>
                 </tbody>
             </table>
         </md-data-table-container>
-        <md-data-table-pagination md-limit="vm.resultPage.size" md-page="vm.resultPage.currentPage"
-            md-total="{{vm.resultPage.totalElements}}" md-trigger="vm.resultPageChanged"></md-data-table-pagination>
     </div>
+    <!-- Feedback  -->
     <div class="margin-20" layout="row">
         <h4>Feedbacks of the receipt</h4>
     </div>
@@ -77,14 +45,13 @@
         <table md-data-table md-progress="deferred">
             <thead>
               <tr>
-                <th>id</th>
                 <th>Rating</th>
                 <th>Comment</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat-start="feedback in vm.receipt.feedbacks">
-                <td>{{feedback.id}}</td>
                 <td>{{feedback.rating}}</td>
                 <td>{{feedback.comment}}</td>
                 <td><md-button class="button-assertive swipe-button" aria-label="Delete" ng-click="vm.deleteReceiptFeedback(feedback)">
@@ -96,5 +63,16 @@
               <tr ng-repeat-end>
             </tbody>
         </table>
+    </div>
+    <div class="margin-20" layout="row" layout-align="center center">
+        <md-list>
+            <md-subheader class="md-no-sticky">Receipt Images</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="image in vm.receipt.images">
+                <img ng-src="{{image.path}}" class="receipt-image-big" />
+                <div class="md-list-item-text">
+                    <pre hightlight lang="text" size="xsmall">{{image.ocrResult}}</pre>
+                </div>
+            </md-list-item>
+        </md-list>
     </div>
 </md-content>

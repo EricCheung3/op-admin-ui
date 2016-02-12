@@ -1,0 +1,49 @@
+<md-content class="padded-content-page">
+  <div class="margin-20" layout="row">
+      <h4>Parser results:</h4>
+  </div>
+  <div>
+    <p>Chain Code: {{vm.result.chainCode}}</p>
+    <p>Branch Name: {{vm.result.branchName}}</p>
+    <p>Parsed Total: {{vm.result.parsedTotal}}</p>
+    <p>Parsed Date: {{vm.result.parsedDate}}</p>
+  </div>
+
+  <div class="margin-20" layout="row">
+      <h3>Combine OCR results and Parser results:</h3>
+  </div>
+  <div>
+    <md-data-table-container>
+      <table md-data-table md-progress="deferred">
+          <thead>
+              <tr>
+                <th>Line Number</th>
+                <th>OCR Result</th>
+                <th style="color:#FF0000">Field Type</th>
+                <th style="color:#FF0000">Field Value</th>
+                <th style="color:#0000FF">Item Name</th>
+                <th style="color:#0000FF">Item Price</th>
+                <th style="color:#0000FF">Catalog Code</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="(index, line) in vm.ocrResult track by $index">
+                <td>{{index}}</td>
+                <td ng-if="line.ocrResult===undefined">{{line}}</td>
+                <td ng-if="line.ocrResult!==undefined"  style="color:#00FF00">{{line.ocrResult}}</td>
+                <td style="color:#FF0000">{{line.field.type}}</td> <!--red-->
+                <td style="color:#FF0000">{{line.field.value}}</td> <!--red-->
+                <td style="color:#0000FF">{{line.item.parsedName}}</td><!--blue-->
+                <td style="color:#0000FF">{{line.item.parsedPrice}}</td>
+                <td style="color:#0000FF">{{line.item.catalogCode}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </md-data-table-container>
+  </div>
+
+  <md-data-table-pagination md-limit="vm.resultPage.size" md-page="vm.resultPage.currentPage"
+      md-total="{{vm.resultPage.totalElements}}" md-trigger="vm.resultPageChanged">
+  </md-data-table-pagination>
+</div>
+</md-content>

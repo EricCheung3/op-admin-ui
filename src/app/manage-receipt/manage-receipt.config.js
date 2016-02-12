@@ -17,11 +17,18 @@
             controller: 'ListReceiptsController',
             controllerAs: 'vm'
         })
-        .state('triangular.admin-default.receipt-detail', {
+        .state('triangular.admin-default.receipt-result', {
             url: '/admin/receipts/:receiptId',
             templateUrl: 'app/manage-receipt/display-receipt.tmpl.html',
             // set the controller to load for this page
             controller: 'DisplayReceiptController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.receipt-result-detail', {
+            url: '/admin/receipts/:receiptId/:index',
+            templateUrl: 'app/manage-receipt/display-receipt-result-detail.tmpl.html',
+            // set the controller to load for this page
+            controller: 'DisplayReceiptDetailController',
             controllerAs: 'vm'
         });
 

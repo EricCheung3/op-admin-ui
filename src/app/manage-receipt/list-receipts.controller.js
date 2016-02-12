@@ -46,7 +46,7 @@
         };
 
         function showReceipt(receiptId) {
-            $state.go('triangular.admin-default.receipt-detail',{receiptId:receiptId});
+            $state.go('triangular.admin-default.receipt-result',{receiptId:receiptId});
         }
     }
 })();
