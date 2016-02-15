@@ -25,7 +25,7 @@
             controllerAs: 'vm'
         })
         .state('triangular.admin-default.receipt-result-detail', {
-            url: '/admin/receipts/:receiptId/:index',
+            url: '/admin/receipts/:receiptId/:resultId',
             templateUrl: 'app/manage-receipt/display-receipt-result-detail.tmpl.html',
             // set the controller to load for this page
             controller: 'DisplayReceiptDetailController',

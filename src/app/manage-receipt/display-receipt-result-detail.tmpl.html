@@ -27,7 +27,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="(index, line) in vm.ocrResult track by $index">
+              <tr ng-repeat="(index, line) in vm.ocrResults track by $index">
                 <td>{{index}}</td>
                 <td ng-if="line.ocrResult===undefined">{{line}}</td>
                 <td ng-if="line.ocrResult!==undefined"  style="color:#00FF00">{{line.ocrResult}}</td>

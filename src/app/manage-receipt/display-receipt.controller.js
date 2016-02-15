@@ -95,8 +95,8 @@
             vm.receipt.feedbacks.splice(feedback, 1);
         };
 
-        function showReceiptResultDetail(index) {
-            $state.go('triangular.admin-default.receipt-result-detail',{receiptId:$stateParams.receiptId, index:index});
+        function showReceiptResultDetail(resultId) {
+            $state.go('triangular.admin-default.receipt-result-detail',{receiptId:$stateParams.receiptId, resultId:resultId});
         };
 
         function parseReceipt(receiptId) {
@@ -104,6 +104,10 @@
             .then( function(location){
                 var resultId = location.substring(location.lastIndexOf('/') + 1);
                 console.log(resultId);
+            })
+            .then(function() {
+              loadReceiptResults(0, 10);
+              loadReceiptFeedbacks(0, 10);
             });
         };
     }

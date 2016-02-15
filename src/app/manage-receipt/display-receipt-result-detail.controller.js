@@ -6,7 +6,7 @@
         .controller('DisplayReceiptDetailController', DisplayReceiptDetailController)
         .filter('split', function() {
             return function(input, splitChar) {
-                //useage: {{input | split:'\n':0}}
+                //useage: {{input | split:'\n'}}
                 return input.split(splitChar);
             }
         })
@@ -16,7 +16,7 @@
     function DisplayReceiptDetailController($q, $stateParams, adminService, $state) {
         var vm = this;
         vm.receipt = {};
-        vm.result = {};
+        vm.ocrResults = {};
 
         adminService.getAdminResource()
         .then( function(resource) {
@@ -28,44 +28,34 @@
         })
         .then( function(images){
             vm.receipt.images = images;
-
+            // FIXME: ocrResults should have all result of all images ...
+            images.forEach(function(image) {
+              vm.ocrResults = image.ocrResult.split('\n');
+            });
             loadReceiptResults(0, 10);
         })
         ;
 
         function loadReceiptResults( pageNumber, size ) {
-            vm.receipt.$get('results', {'page': pageNumber, 'size':size, 'sort':null})
-            .then( function(results){
-                vm.resultPage = results.page;
-                vm.resultPage.currentPage = results.page.number + 1;
-                if (results.$has('receiptResults')) {
-                    return results.$get('receiptResults');
-                }
-                vm.receipt.results = [];
-                return $q.reject('no results!');
-            })
-            .then( function(resultList){
-                vm.receipt.results = resultList;
-                resultList.forEach( function(result){
-                    result.$get('items', {'page': 0, 'size':100, 'sort':null})
-                    .then( function (items){
-                        if (items.$has('receiptItems')) {
-                            return items.$get('receiptItems');
-                        }
-                        result.receiptItems = [];
-                        return $q.reject('no items!');
-                    })
-                    .then( function(itemList){
-                        result.receiptItems = itemList;
-                    })
-                });
+            vm.receipt.$get('result',{'resultId': $stateParams.resultId})
+            .then(function(result) {
+                vm.receipt.result = result;
+                result.$get('items', {'page': 0, 'size':100, 'sort':null})
+                .then( function (items){
+                    if (items.$has('receiptItems')) {
+                        return items.$get('receiptItems');
+                    }
+                    result.receiptItems = [];
+                    return $q.reject('no items!');
+                })
+                .then( function(itemList){
+                    result.receiptItems = itemList;
+                })
             })
             .then(function () {
-                vm.result = vm.receipt.results[$stateParams.index];
-                vm.ocrResult = vm.receipt.images[$stateParams.index].ocrResult.split('\n');
-                vm.result.$get('receiptItems')
+                vm.receipt.result.$get('receiptItems')
                 .then(function(items) {
-                  joinWith(vm.ocrResult, vm.result.receiptFields, items);
+                  joinWith(vm.ocrResults, vm.receipt.result.receiptFields, items);
                 });
             });
         };
@@ -78,6 +68,7 @@
                   parseResult.ocrResult = ocrResults[line];
                   parseResult.field = fields[field];
                   ocrResults[line] = parseResult;
+                  // console.log("ocrResults[line]",ocrResults[line]);
                }
             }
           }
