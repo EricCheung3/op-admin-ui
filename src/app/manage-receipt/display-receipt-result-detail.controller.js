@@ -16,7 +16,7 @@
     function DisplayReceiptDetailController($q, $stateParams, adminService, $state) {
         var vm = this;
         vm.receipt = {};
-        vm.ocrResults = {};
+        vm.ocrResults = [];
 
         adminService.getAdminResource()
         .then( function(resource) {
@@ -28,13 +28,11 @@
         })
         .then( function(images){
             vm.receipt.images = images;
-            // FIXME: ocrResults should have all result of all images ...
             images.forEach(function(image) {
-              vm.ocrResults = image.ocrResult.split('\n');
+              vm.ocrResults = vm.ocrResults.concat(image.ocrResult.split('\n'));
             });
             loadReceiptResults(0, 10);
-        })
-        ;
+        });
 
         function loadReceiptResults( pageNumber, size ) {
             vm.receipt.$get('result',{'resultId': $stateParams.resultId})
