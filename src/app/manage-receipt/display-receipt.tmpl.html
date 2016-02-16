@@ -21,12 +21,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat ="(index,result) in vm.receipt.results">
+                  <tr ng-repeat ="result in vm.receipt.results">
                     <td>{{result.chainCode}}</td>
                     <td>{{result.branchName}}</td>
                     <td>{{result.parsedTotal}}</td>
                     <td>{{result.parsedDate}}</td>
-                    <td><md-button class="md-icon-button md-accent" aria-label="Edit" ng-click="vm.showReceiptResultDetail(index)">
+                    <td><md-button class="md-icon-button md-accent" aria-label="Edit" ng-click="vm.showReceiptResultDetail(result.id)">
                             <md-icon md-svg-icon="assets/images/icons/ic_edit_black_24px.svg"></md-icon>
                         </md-button>
                     </td>
