@@ -25,7 +25,7 @@
             vm.userProfile = profile;
         });
 
-        vm.submit = function(){
+        function submit(){
             vm.updateProfile = {
               "firstName" : vm.userProfile.firstName,
               "middleName" : vm.userProfile.middleName,
@@ -46,7 +46,7 @@
             });
         };
 
-        vm.cancel = function() {
+        function cancel() {
             $state.go('triangular.admin-default.user-list');
         };
 
