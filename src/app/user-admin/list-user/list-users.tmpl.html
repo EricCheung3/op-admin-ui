@@ -16,14 +16,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr md-auto-select ng-repeat="(index, user) in vm.users">
+                  <tr md-auto-select ng-repeat="user in vm.users">
                     <td>{{user.email}}</td>
                     <td>{{user.profile.firstName}}</td>
                     <td>{{user.profile.middleName}}</td>
                     <td>{{user.profile.lastName}}</td>
                     <td>{{user.profile.phone}}</td>
                     <td> <button type="button" class="btn btn-default"
-                        ng-click="vm.update(index)">update</button></td>
+                        ng-click="vm.update(user.id)">update</button></td>
                   </tr>
                 </tbody>
             </table>

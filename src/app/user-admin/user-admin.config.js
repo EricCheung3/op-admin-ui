@@ -16,6 +16,13 @@
             // set the controller to load for this page
             controller: 'ListUsersController',
             controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.update-user-profile', {
+            url: '/admin/users/:userId',
+            templateUrl: 'app/user-admin/update-user/update-user-profile.tmpl.html',
+            // set the controller to load for this page
+            controller: 'UpdateUserController',
+            controllerAs: 'vm'
         });
 
         triMenuProvider.addMenu({
