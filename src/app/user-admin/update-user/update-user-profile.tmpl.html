@@ -1,72 +1,68 @@
 <div layout="row" flex layout-padding layout-fill layout-align="center center">
     <div flex="40" flex-lg="50" flex-md="70" flex-sm="100">
-        <md-dialog aria-label="Update">
+        <md-card>
             <md-toolbar>
                 <div class="md-toolbar-tools">
                     <h2>Update User Profile</h2>
-                    <span flex></span>
-                    <md-button class="md-icon-button" ng-click="cancel()">
-                      <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-                    </md-button>
                 </div>
             </md-toolbar>
-            <!-- need to fix scroll bar of update form -->
-            <form name="update" style="overflow:scroll">
-                <md-input-container class="md-padding">
-                    <!-- <label for="username" translate>UPDATE.USERNAME.LABEL</label> -->
-                    <!-- <input id="username" label="username" name="username" type="text" ng-model="userProfile.username" required/> -->
-                    <div ng-model="userProfile.username" >
-                        {{userProfile.username}}
+
+          <md-content class="md-padding">
+            <form name="update">
+                <md-input-container>
+                    <div ng-model="vm.userProfile.username" >
+                        {{vm.user.username}}
                     </div>
                 </md-input-container>
 
                 <md-input-container class="md-padding">
                     <label for="firstname" translate>UPDATE.PROFILE.FIRSTNAME</label>
-                    <input id="firstname" label="firstname" name="firstname" type="text" ng-model="userProfile.profile.firstName" />
+                    <input id="firstname" label="firstname" name="firstname" type="text" ng-model="vm.userProfile.firstName" />
                 </md-input-container>
                 <md-input-container class="md-padding">
                     <label for="lastname" translate>UPDATE.PROFILE.MIDDLENAME</labeL>
-                    <input id="middlename" label="middlename" name="middlename" type="text" ng-model="userProfile.profile.middleName" />
+                    <input id="middlename" label="middlename" name="middlename" type="text" ng-model="vm.userProfile.middleName" />
                 </md-input-container>
                 <md-input-container class="md-padding">
                     <label for="lastname" translate>UPDATE.PROFILE.LASTNAME</label>
-                    <input id="lastname" label="lastname" name="lastname" type="text" ng-model="userProfile.profile.lastName" />
+                    <input id="lastname" label="lastname" name="lastname" type="text" ng-model="vm.userProfile.lastName" />
                 </md-input-container>
                 <md-input-container class="md-padding">
                     <label for="phone" translate>UPDATE.PROFILE.PHONENO</label>
-                    <input id="phone" label="phone" name="phone" type="text" ng-model="userProfile.profile.phone" />
+                    <input id="phone" label="phone" name="phone" type="text" ng-model="vm.userProfile.phone" />
                 </md-input-container>
                 <md-input-container class="md-padding">
                     <label for="address1" translate>UPDATE.PROFILE.ADDRESS.ADDRESS1</label>
-                    <input id="address1" label="address1" name="address1" type="text" ng-model="userProfile.profile.address.address1" />
+                    <input id="address1" label="address1" name="address1" type="text" ng-model="vm.userProfile.address.address1" />
                 </md-input-container>
                 <md-input-container class="md-padding">
                     <label for="address2" translate>UPDATE.PROFILE.ADDRESS.ADDRESS2</label>
-                    <input id="address2" label="address2" name="address2" type="text" ng-model="userProfile.profile.address.address2" />
+                    <input id="address2" label="address2" name="address2" type="text" ng-model="vm.userProfile.address.address2" />
                 </md-input-container>
                 <md-input-container class="md-padding">
                     <label for="city" translate>UPDATE.PROFILE.ADDRESS.CITY</label>
-                    <input id="city" label="city" name="city" type="text" ng-model="userProfile.profile.address.city" />
+                    <input id="city" label="city" name="city" type="text" ng-model="vm.userProfile.address.city" />
                 </md-input-container>
                 <md-input-container class="md-padding">
                     <label for="state" translate>UPDATE.PROFILE.ADDRESS.STATE</label>
-                    <input id="state" label="state" name="state" type="text" ng-model="userProfile.profile.address.state" />
+                    <input id="state" label="state" name="state" type="text" ng-model="vm.userProfile.address.state" />
                 </md-input-container>
                 <md-input-container class="md-padding">
                     <label for="zip" translate>UPDATE.PROFILE.ADDRESS.ZIP</label>
-                    <input id="zip" label="zip" name="zip" type="text" ng-model="userProfile.profile.address.zip" />
+                    <input id="zip" label="zip" name="zip" type="text" ng-model="vm.userProfile.address.zip" />
                 </md-input-container>
                 <md-input-container class="md-padding">
                     <label for="country" translate>UPDATE.PROFILE.ADDRESS.COUNTRY</label>
-                    <input id="country" label="country" name="country" type="text" ng-model="userProfile.profile.address.country" />
+                    <input id="country" label="country" name="country" type="text" ng-model="vm.userProfile.address.country" />
                 </md-input-container>
 
             </form>
             <div class="md-actions" layout="row">
                 <span flex></span>
-                <md-button ng-click="submit()">submit</md-button>
-                <md-button ng-click="cancel()" style="margin-right:20px;">cancel</md-button>
+                <md-button ng-click="vm.submit()">submit</md-button>
+                <md-button ng-click="vm.cancel()" style="margin-right:20px;">cancel</md-button>
             </div>
-        </md-dialog>
+          </md-content>
+        </md-card>
     </div>
 </div>
