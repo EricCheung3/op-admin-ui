@@ -31,10 +31,5 @@
             name: 'LANGUAGES.PORTUGUESE',
             key: 'pt'
         }])
-        // set a constant for the API we are connecting to
-//        .constant('API_CONFIG', {
-            //'url':  'http://104.154.88.206:7801'   // Dev Server on Google Cloud
-//            'url':  'http://192.168.99.100:7801'  // Server on Local Docker Container
-//        })
         ;
 })();
