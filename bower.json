@@ -39,7 +39,8 @@
     "angular-mocks": "1.4.9"
   },
   "resolutions": {
-    "angular": "1.4.9"
+    "angular": "1.4.9",
+    "angular-material": "1.0.5"
   },
   "overrides": {
     "weather-icons": {
