@@ -33,8 +33,10 @@
             })
             .then( function(receiptList)
             {
-                console.log(receiptList);
                 vm.receipts = receiptList;
+                vm.receipts.forEach(function (receipt) {
+                    receipt.localTimestamp = (new Date(Date.parse(receipt.uploadTimestamp))).toString().split('GMT')[0];
+                });
             })
             ;
 
