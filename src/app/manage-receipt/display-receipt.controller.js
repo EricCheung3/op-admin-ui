@@ -20,6 +20,7 @@
         })
         .then( function(receipt){
             vm.receipt = receipt;
+            vm.receipt.localTimestamp = (new Date(Date.parse(receipt.uploadTimestamp))).toString().split('GMT')[0];
             return receipt.$get('receiptImages');
         })
         .then( function(images){

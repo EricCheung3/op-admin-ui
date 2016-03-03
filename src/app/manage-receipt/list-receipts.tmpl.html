@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                   <tr md-auto-select ng-repeat="receipt in vm.receipts">
-                    <td>{{receipt.uploadTimestamp}}</td>
+                    <td>{{receipt.localTimestamp}}</td>
                     <td>{{receipt.user}}</td>
                     <td>{{receipt.rating}}</td>
                     <td><md-button class="md-icon-button md-accent" aria-label="Edit" ng-click="vm.showReceipt(receipt.id)">
