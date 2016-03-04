@@ -16,7 +16,7 @@
   },
   "production": {
     "EnvironmentConfig": {
-      "api": "http://api.theopenprice.com:8081"
+      "api": "http://www.theopenprice.com:8081"
     }
   }
 }
