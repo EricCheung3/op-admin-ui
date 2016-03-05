@@ -2,7 +2,7 @@
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
-### This is the repo for OpenPrice Admin UI App code. ###
+### This is the repo for Openprice Admin UI App code. ###
 
 Developer Guide
 ================
@@ -46,7 +46,7 @@ Ask admin to add your account to groundtruthinc team.
 
 Setup [SSH key for Bitbucket](https://confluence.atlassian.com/display/BITBUCKET/How+to+install+a+public+key+on+your+Bitbucket+account)
 
-## Run OpenPrice AdminUI Project locally first time ##
+## Run Openprice AdminUI Project locally first time ##
 
 ### Checkout code ###
 Check out the code from Bitbucket
@@ -63,7 +63,7 @@ bower install
 ```
 
 ### Run with Browser ###
-You can run OpenPrice AdminUI app inside browser with local api servers running in docker :
+You can run Openprice AdminUI app inside browser with local api servers running in docker :
 ```
 gulp serve --env localdocker
 ```

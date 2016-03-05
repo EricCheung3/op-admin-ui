@@ -8,7 +8,7 @@
     /* @ngInject */
     function translateConfig(triSettingsProvider, APP_LANGUAGES) {
         // set app name & logo (used in loader, sidemenu, login pages, etc)
-        triSettingsProvider.setName('OpenPrice Admin');
+        triSettingsProvider.setName('Openprice Admin');
         triSettingsProvider.setLogo('assets/images/logo.png');
         // set current version of app (shown in footer)
         triSettingsProvider.setVersion('0.0.1');
