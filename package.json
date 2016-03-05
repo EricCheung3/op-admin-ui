@@ -1,6 +1,6 @@
 {
   "name": "OpenpriceAdmin",
-  "version": "0.0.1",
+  "version": "0.4.x",
   "devDependencies": {
     "browser-sync": "~1.7.1",
     "chalk": "~0.5.1",
