@@ -11,12 +11,12 @@
   },
   "development": {
     "EnvironmentConfig": {
-      "api": "http://dev.theopenprice.com:7801"
+      "api": "http://dev-admin-api.theopenprice.com"
     }
   },
   "production": {
     "EnvironmentConfig": {
-      "api": "http://104.154.17.58:8081"
+      "api": "http://admin-api.theopenprice.com"
     }
   }
 }
