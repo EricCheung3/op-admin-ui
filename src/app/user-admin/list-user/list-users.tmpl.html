@@ -29,7 +29,8 @@
             </table>
         </md-data-table-container>
 
-        <md-data-table-pagination md-limit="vm.page.size" md-page="vm.page.currentPage" md-total="{{vm.page.totalElements}}" md-trigger="pageChanged"></md-data-table-pagination>
+        <md-data-table-pagination md-limit="vm.page.size" md-page="vm.page.currentPage" 
+        md-total="{{vm.page.totalElements}}" md-trigger="vm.pageChanged"></md-data-table-pagination>
 
 <!-- <tri-table columns="::vm.columns" contents="::vm.contents" page-size="5"></tri-table> -->
     </div>
