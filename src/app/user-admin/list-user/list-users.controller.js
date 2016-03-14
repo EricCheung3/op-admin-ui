@@ -15,12 +15,12 @@
         vm.pageChanged = pageChanged;
         vm.update = update;
 
-        setup(0);
+        setup(0, 10);
 
-        function setup( pageNumber ) {
+        function setup( pageNumber, size) {
             adminService.getAdminResource()
             .then( function(resource) {
-                return resource.$get('users', {'page': pageNumber, 'size':10, 'sort':null});
+                return resource.$get('users', {'page': pageNumber, 'size':size, 'sort':null});
             })
             .then( function(users){
                 vm.page = users.page;
@@ -36,10 +36,10 @@
             });
         };
 
-        function pageChanged() {
-            setup(vm.page.currentPage - 1); //Spring HATEOAS page starts with 0
+        function pageChanged(page, limit) {
+            console.log('page changed to '+page + ', limit with '+limit)
+            setup(page-1, limit); //Spring HATEOAS page starts with 0
         };
-
         function update(userId){
             $state.go('triangular.admin-default.update-user-profile',{userId:userId});
         };
