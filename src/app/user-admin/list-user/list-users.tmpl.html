@@ -24,12 +24,14 @@
                     <td>{{user.profile.phone}}</td>
                     <td> <button type="button" class="btn btn-default"
                         ng-click="vm.update(user.id)">update</button></td>
+                    <td> <button type="button" class="btn btn-default"
+                        ng-click="vm.deleteUser(user)">delete</button></td>
                   </tr>
                 </tbody>
             </table>
         </md-data-table-container>
 
-        <md-data-table-pagination md-limit="vm.page.size" md-page="vm.page.currentPage" 
+        <md-data-table-pagination md-limit="vm.page.size" md-page="vm.page.currentPage"
         md-total="{{vm.page.totalElements}}" md-trigger="vm.pageChanged"></md-data-table-pagination>
 
 <!-- <tri-table columns="::vm.columns" contents="::vm.contents" page-size="5"></tri-table> -->
