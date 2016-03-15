@@ -14,8 +14,8 @@
         vm.setup = setup;
         vm.pageChanged = pageChanged;
         vm.update = update;
-        vm.disableUser = disableUser;
-        vm.enableUser = enableUser;
+        vm.lockUser = lockUser;
+        vm.unlockUser = unlockUser;
 
         setup(0, 10);
 
@@ -46,7 +46,7 @@
             $state.go('triangular.admin-default.update-user-profile',{userId:userId});
         };
 
-        function disableUser(user){
+        function lockUser(user){
             if(!user.accountLocked){
                 user.$put("lockState", {}, {"locked": true})
                 .then(function (argument) {
@@ -55,7 +55,7 @@
               }
         };
 
-        function enableUser(user){
+        function unlockUser(user){
             if(user.accountLocked){
                 user.$put("lockState", {}, {"locked": false})
                 .then(function (argument) {
