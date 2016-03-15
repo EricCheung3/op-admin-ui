@@ -47,19 +47,21 @@
         };
 
         function disableUser(user){
-            if(!user.accountLocked)
+            if(!user.accountLocked){
                 user.$put("lockState", {}, {"locked": true})
                 .then(function (argument) {
                     setup(vm.page.currentPage-1, vm.page.size);
                 });
+              }
         };
 
         function enableUser(user){
-            if(user.accountLocked)
+            if(user.accountLocked){
                 user.$put("lockState", {}, {"locked": false})
                 .then(function (argument) {
                     setup(vm.page.currentPage-1, vm.page.size);
                 });
+              }
         };
     };
 })();
