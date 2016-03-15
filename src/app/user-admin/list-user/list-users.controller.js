@@ -14,7 +14,8 @@
         vm.setup = setup;
         vm.pageChanged = pageChanged;
         vm.update = update;
-        vm.deleteUser = deleteUser;
+        vm.disableUser = disableUser;
+        vm.enableUser = enableUser;
 
         setup(0, 10);
 
@@ -45,10 +46,20 @@
             $state.go('triangular.admin-default.update-user-profile',{userId:userId});
         };
 
-        function deleteUser(user){
-            console.log("delete user", user.email);
-            user.$del('self')
-            vm.users.splice(user, 1);
+        function disableUser(user){
+            if(!user.accountLocked)
+                user.$put("lockState", {}, {"locked": true})
+                .then(function (argument) {
+                    setup(vm.page.currentPage-1, vm.page.size);
+                });
+        };
+
+        function enableUser(user){
+            if(user.accountLocked)
+                user.$put("lockState", {}, {"locked": false})
+                .then(function (argument) {
+                    setup(vm.page.currentPage-1, vm.page.size);
+                });
         };
     };
 })();
